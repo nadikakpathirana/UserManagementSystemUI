@@ -6,6 +6,7 @@ import { AxiosResponse } from "axios";
 import { User } from "../../utils/entity/User";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
+import getRole from "../../utils/jwt";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Login = () => {
         .then((res: AxiosResponse<User>) => {
             if (res.data.token) {
                 cookies.set('token', res.data.token, { path: '/' });
+                cookies.set('role', getRole(res.data.token), { path: '/' });
                 navigate('/');
             }
         })

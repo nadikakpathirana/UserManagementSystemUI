@@ -74,25 +74,25 @@ const Register = () => {
                         </tr>
                         <tr>
                             <td>
-                                <Form.Group className="mb-3" controlId="fname">
+                                <Form.Group className="mb-3" controlId="fName">
                                     <Form.Label>First Name</Form.Label>
                                     <Form.Control
                                         required
                                         type="text"
                                         placeholder="Enter First Name"
-                                        value={user.fname}
-                                        onChange={e => setUser({ ...user, fname: e.target.value })} />
+                                        value={user.fName}
+                                        onChange={e => setUser({ ...user, fName: e.target.value })} />
                                 </Form.Group>
                             </td>
                             <td>
-                                <Form.Group className="mb-3" controlId="lname">
+                                <Form.Group className="mb-3" controlId="lName">
                                     <Form.Label>Last Name</Form.Label>
                                     <Form.Control
                                         required
                                         type="text"
                                         placeholder="Enter Last Name"
-                                        value={user.lname}
-                                        onChange={e => setUser({ ...user, lname: e.target.value })} />
+                                        value={user.lName}
+                                        onChange={e => setUser({ ...user, lName: e.target.value })} />
                                 </Form.Group>
                             </td>
                         </tr>

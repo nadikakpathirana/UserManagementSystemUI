@@ -1,0 +1,13 @@
+.nav {
+    padding: 10px 5px;
+    background-color: #d7d7d7;
+    justify-content: flex-end;
+    gap: 20px
+}
+
+.user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
