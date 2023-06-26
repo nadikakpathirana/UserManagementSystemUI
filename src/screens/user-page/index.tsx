@@ -29,7 +29,7 @@ const UserPage = () => {
                         setUsers([...users, res.data]);
                     }
                 })
-                .catch(error => alert("You haven't access for this action"));
+                .catch(error => console.log("You haven't access for this action"));
         } else {
             UserService.getUsers()
                 .then((res: AxiosResponse<User[]>) => {
@@ -37,7 +37,7 @@ const UserPage = () => {
                         setUsers(res.data);
                     }
                 })
-                .catch(error => alert("You haven't access for this action"));
+                .catch(error => console.log("You haven't access for this action"));
         }
     }, [usersUpdateRequired]);
 
