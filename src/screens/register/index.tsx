@@ -37,6 +37,10 @@ const Register = () => {
             .catch(error => alert(error));
     }
 
+    const goToLogin = () => {
+        navigate('/login');
+    }
+
     const isPasswordInvalid = (): boolean => passwordConfirm.trim() !== user.password?.trim();
 
     const isEmailInvalid = (): boolean => user.email?.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) === null;
@@ -125,6 +129,9 @@ const Register = () => {
                 </table>
                 <Button variant="primary" type="submit" className="mt-1">
                     Register
+                </Button>
+                <Button variant="success" onClick={goToLogin} className="mt-1">
+                    Sign In
                 </Button>
             </Form>
         </div>

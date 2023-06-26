@@ -9,6 +9,7 @@ import {UserService} from "../../utils/service/user-service";
 import {AxiosResponse} from "axios";
 import {User} from "../../utils/entity/User";
 import {useNavigate} from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const UserPage = () => {
 
@@ -21,13 +22,23 @@ const UserPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        UserService.getUsers()
-            .then((res: AxiosResponse<User[]>) => {
-                if (res.status == 200) {
-                    setUsers(res.data);
-                }
-            })
-            .catch(error => alert("You haven't access for this action"));
+        if (new Cookies().get('role') === 'User'){
+            UserService.getUser()
+                .then((res: AxiosResponse<User>) => {
+                    if (res.status === 200) {
+                        setUsers([...users, res.data]);
+                    }
+                })
+                .catch(error => alert("You haven't access for this action"));
+        } else {
+            UserService.getUsers()
+                .then((res: AxiosResponse<User[]>) => {
+                    if (res.status === 200) {
+                        setUsers(res.data);
+                    }
+                })
+                .catch(error => alert("You haven't access for this action"));
+        }
     }, [usersUpdateRequired]);
 
     const viewModal = (user: User) => {

@@ -25,7 +25,7 @@ const NavBar = () => {
             >
                 <div className="user-profile">
                     <BsPersonCircle className="avatar" />
-                    <span className="username">{`(${cookies.get('role')})`}</span>
+                    <span className="username">{`${cookies.get('name')} (${cookies.get('role')})`}</span>
                 </div>
 
                 <Button

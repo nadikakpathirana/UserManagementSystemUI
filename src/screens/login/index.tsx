@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 import { User } from "../../utils/entity/User";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
-import getRole from "../../utils/jwt";
+import { getRole, getName, getId } from "../../utils/jwt";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -28,10 +28,16 @@ const Login = () => {
             if (res.data.token) {
                 cookies.set('token', res.data.token, { path: '/' });
                 cookies.set('role', getRole(res.data.token), { path: '/' });
+                cookies.set('name', getName(res.data.token), { path: '/' });
+                cookies.set('id', getId(res.data.token), { path: '/' });
                 navigate('/');
             }
         })
         .catch(error => alert(error));
+    }
+
+    const handleRegisterClick = () => {
+        navigate('/register');
     }
 
     return (
@@ -50,6 +56,9 @@ const Login = () => {
 
                 <Button variant="primary" type="submit" className="mt-1">
                     Login
+                </Button>
+                <Button variant="success" onClick={handleRegisterClick} className="mt-1">
+                    Sign Up
                 </Button>
             </Form>
         </div>
