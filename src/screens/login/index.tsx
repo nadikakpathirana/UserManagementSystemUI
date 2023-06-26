@@ -20,6 +20,7 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -33,7 +34,9 @@ const Login = () => {
                 navigate('/');
             }
         })
-        .catch(error => alert(error));
+        .catch(() => {
+            setError('Invalid username or password!');
+        });
     }
 
     const handleRegisterClick = () => {
@@ -46,13 +49,21 @@ const Login = () => {
                 <h2 className="mb-3">Login</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} />
+                    <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => {
+                        setUsername(e.target.value);
+                        setError('');
+                    }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => {
+                        setPassword(e.target.value);
+                        setError('');
+                    }} />
                 </Form.Group>
+
+                { error.length !== 0 && <label className="error-text">{error}</label> }
 
                 <Button variant="primary" type="submit" className="mt-1">
                     Login
