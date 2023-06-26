@@ -34,7 +34,7 @@ const NavBar = () => {
                     style={{
                         marginRight:'20px',
                     }}>
-                    Log Out</Button>{' '}
+                    Log Out</Button>
             </Nav>
             }
         </>
