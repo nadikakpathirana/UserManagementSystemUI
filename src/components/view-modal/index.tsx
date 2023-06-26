@@ -53,7 +53,7 @@ const ViewModal = (props: any) => {
                                     <Form.Group className="mb-3" controlId="role">
                                         <Form.Label>Select Role</Form.Label>
                                         <Form.Select
-                                            disabled={cookies.get('role') !== "Admin"}
+                                            disabled={props.type === 'view' || cookies.get('role') !== "Admin"}
                                             value={props.user.role}
                                             onChange={e => props.setUser({ ...props.user, role: e.target.value })}>
                                             <option value="User">User</option>
