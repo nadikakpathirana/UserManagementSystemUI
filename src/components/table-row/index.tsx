@@ -5,6 +5,9 @@ import './table-row.css'
 
 const TableRow = (props: any) => {
     const cookies = new Cookies();
+    debugger;
+    console.log(parseInt(cookies.get('id')), "  ", props.user.id);
+
     return (
         <tr className="tr">
             <td>{props.user.id}</td>
@@ -16,7 +19,7 @@ const TableRow = (props: any) => {
                 <ButtonGroup aria-label="Basic example">
                     <Button variant="primary" onClick={() => props.viewModal(props.user)}>View</Button>
                     {cookies.get('role') === 'User' ? <Button variant="primary" onClick={() => props.editModal(props.user)}>Change</Button> : <Button variant="primary" onClick={() => props.editModal(props.user)}>Edit</Button>}
-                    {cookies.get('role') === 'Admin' && <Button variant="primary" onClick={() => props.deleteModal(props.user)}>Delete</Button>}
+                    {cookies.get('role') === 'Admin' && <Button variant="primary" onClick={() => props.deleteModal(props.user)} disabled={parseInt(cookies.get('id')) === props.user.id}>Delete</Button>}
                 </ButtonGroup>
             </td>
         </tr>
